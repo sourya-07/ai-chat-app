@@ -22,7 +22,7 @@ const userSchema = new mongoose.Schema({
 
 
 userSchema.statics.hashedPassword = async function (password) {
-  return await bcrypt.hash(password, 10)
+    return await bcrypt.hash(password, 10)
 }
 
 
@@ -33,7 +33,9 @@ userSchema.methods.isValidPassword = async function (password) {
 userSchema.methods.generateJWT = function () {
     return jwt.sign(
         { email: this.email },
-        process.env.JWT_SECRET)
+        process.env.JWT_SECRET, {
+        expiresIn: '24h'
+    })
 }
 
 
