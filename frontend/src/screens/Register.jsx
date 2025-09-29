@@ -5,8 +5,8 @@ import axios from '../config/axios'
 
 const Register = () => {
 
-    const [ email, setEmail ] = useState('')
-    const [ password, setPassword ] = useState('')
+    const [email, setEmail] = useState('')
+    const [password, setPassword] = useState('')
 
     const { setUser } = useContext(UserContext)
 
