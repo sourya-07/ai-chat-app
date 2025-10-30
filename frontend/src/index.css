@@ -1,5 +1,6 @@
-@import "tailwindcss";
-
+/* @tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 * {
   margin: 0%;
@@ -7,7 +8,43 @@
   box-sizing: border-box;
 }
 
-html, body {
+html,
+body {
   height: 100%;
   width: 100%;
+}
+
+.message-box{
+  scroll-behavior: smooth;
+}
+.message-box::-webkit-scrollbar{
+  display: none;
+} */
+ 
+ @import "tailwindcss";
+ @tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  
+}
+
+.message-box {
+  scroll-behavior: smooth;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+
+.message-box::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
 }

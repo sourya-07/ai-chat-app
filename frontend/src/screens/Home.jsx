@@ -6,9 +6,9 @@ import { useNavigate } from 'react-router-dom'
 const Home = () => {
 
     const { user } = useContext(UserContext)
-    const [isModalOpen, setIsModalOpen] = useState(false)
-    const [projectName, setProjectName] = useState(null)
-    const [project, setProject] = useState([])
+    const [ isModalOpen, setIsModalOpen ] = useState(false)
+    const [ projectName, setProjectName ] = useState(null)
+    const [ project, setProject ] = useState([])
 
     const navigate = useNavigate()
 
