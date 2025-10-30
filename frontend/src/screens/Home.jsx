@@ -39,62 +39,64 @@ const Home = () => {
     }, [])
 
     return (
-        <main className='p-4'>
-            <div className="projects flex flex-wrap gap-3">
+        <main className="min-h-screen bg-gradient-to-br from-[#0d1117] via-[#171e29] to-[#23272e] flex flex-col sm:flex-row h-screen">
+            {/* Sidebar */}
+            <aside className="w-full sm:w-72 bg-[#161b22] border-r border-[#23272e] p-4 flex flex-col gap-3 min-h-0">
                 <button
                     onClick={() => setIsModalOpen(true)}
-                    className="project p-4 border border-slate-300 rounded-md">
-                    New Project
-                    <i className="ri-link ml-2"></i>
+                    className="project w-full p-4 mb-2 text-white bg-blue-700 border-0 rounded-xl shadow-md font-semibold flex items-center gap-2 hover:bg-blue-600 hover:scale-[1.04] focus-visible:ring-2 focus-visible:ring-sky-400 transition-all outline-none"
+                >
+                    New Chat
+                    <i className="ri-add-line text-xl ml-2"></i>
                 </button>
-
-                {
-                    project.map((project) => (
-                        <div key={project._id}
+                <div className="flex-1 min-h-0 overflow-y-auto scrollbar-thin scrollbar-thumb-[#23272e]/60 scrollbar-track-transparent pr-1">
+                    {project.map((project) => (
+                        <div
+                            key={project._id}
                             onClick={() => {
-                                navigate(`/project`, {
-                                    state: { project }
-                                })
+                                navigate(`/project`, { state: { project } })
                             }}
-                            className="project flex flex-col gap-2 cursor-pointer p-4 border border-slate-300 rounded-md min-w-52 hover:bg-slate-200">
-                            <h2
-                                className='font-semibold'
-                            >{project.name}</h2>
-
-                            <div className="flex gap-2">
-                                <p> <small> <i className="ri-user-line"></i> Collaborators</small> :</p>
-                                {project.users.length}
+                            className="project w-full flex flex-col gap-2 cursor-pointer p-4 mb-2 bg-[#171e29] border border-[#23272e] rounded-lg shadow-sm text-white hover:bg-[#202c3b] hover:border-blue-700 hover:shadow-md hover:scale-[1.02] focus-visible:ring-2 focus-visible:ring-blue-700 active:scale-95 transition-all duration-150 outline-none"
+                            tabIndex={0}
+                        >
+                            <h2 className="font-bold text-base text-white truncate tracking-wide">{project.name}</h2>
+                            <div className="flex gap-2 items-center text-slate-400 text-xs">
+                                <i className="ri-user-line"></i>
+                                <span>{project.users.length} Collaborator{project.users.length !== 1 ? 's' : ''}</span>
                             </div>
-
                         </div>
-                    ))
-                }
-
-
-            </div>
-
+                    ))}
+                </div>
+            </aside>
+            {/* Main area */}
+            <section className="flex-1 flex flex-col items-center justify-center px-6 py-12">
+                <div className="text-slate-300 text-2xl font-light text-center">
+                    Select a chat to view details...
+                </div>
+            </section>
             {isModalOpen && (
-                <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-                    <div className="bg-white p-6 rounded-md shadow-md w-1/3">
-                        <h2 className="text-xl mb-4">Create New Project</h2>
+                <div className="fixed inset-0 flex items-center justify-center bg-black/70 z-30 animate-fadein">
+                    <div className="bg-[#23272e] p-8 rounded-xl shadow-2xl w-full max-w-md border border-slate-700 relative">
+                        <h2 className="text-2xl mb-6 font-semibold text-white text-center">Create New Chat</h2>
                         <form onSubmit={createProject}>
-                            <div className="mb-4">
-                                <label className="block text-sm font-medium text-gray-700">Project Name</label>
+                            <div className="mb-5">
+                                <label className="block text-slate-300 text-sm mb-2">Chat Name</label>
                                 <input
                                     onChange={(e) => setProjectName(e.target.value)}
                                     value={projectName}
-                                    type="text" className="mt-1 block w-full p-2 border border-gray-300 rounded-md" required />
+                                    type="text"
+                                    className="mt-1 block w-full p-3 rounded-md border border-slate-600 bg-[#171e29] text-slate-100 placeholder:text-slate-400 focus:border-blue-700 focus:ring-2 focus:ring-blue-900/40 outline-none"
+                                    required
+                                />
                             </div>
                             <div className="flex justify-end">
-                                <button type="button" className="mr-2 px-4 py-2 bg-gray-300 rounded-md" onClick={() => setIsModalOpen(false)}>Cancel</button>
-                                <button type="submit" className="px-4 py-2 bg-blue-600 text-white rounded-md">Create</button>
+                                <button type="button" className="mr-2 px-4 py-2 bg-slate-700 text-white rounded-md hover:bg-slate-600 transition" onClick={() => setIsModalOpen(false)}>Cancel</button>
+                                <button type="submit" className="px-4 py-2 bg-blue-700 hover:bg-blue-600 text-white rounded-md font-semibold transition">Create</button>
                             </div>
                         </form>
                     </div>
                 </div>
             )}
-
-
         </main>
     )
 }
