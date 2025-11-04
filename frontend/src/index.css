@@ -48,3 +48,36 @@ body {
 .message-box::-webkit-scrollbar {
   display: none; /* Chrome, Safari */
 }
+
+/* Message styling */
+.message {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth transitions for UI elements */
+.sidePanel {
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Input field focus styles */
+.inputField input:focus {
+  outline: none;
+}
+
+/* Code editor styling */
+.code-editor-area {
+  font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-size: 14px;
+  line-height: 1.5;
+}
