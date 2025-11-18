@@ -163,11 +163,10 @@ const Project = () => {
         })
 
         return () => {
-            // Cleanup if needed
+            
         }
     }, [])
 
-    // Auto-scroll when messages change
     useEffect(() => {
         scrollToBottom()
     }, [messages])
@@ -214,7 +213,7 @@ const Project = () => {
                         ref={messageBox}
                         className="message-box p-2 flex-grow flex flex-col gap-2 overflow-y-auto">
                         {messages.map((msg, index) => {
-                            // FIXED: Check if message is from current logged-in user
+
                             const isSentByCurrentUser = msg.sender._id === user._id;
                             
                             return (
