@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { UserContext } from '../context/user.context'
-import axios from '../config/axios'
+import axios from '../config/axios.js'
 
 const Register = () => {
 
@@ -26,7 +26,7 @@ const Register = () => {
             setUser(res.data.user)
             navigate('/')
         }).catch((err) => {
-            console.log(err.response.data)
+            console.log(err.response)
         })
     }
 

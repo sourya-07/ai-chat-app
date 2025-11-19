@@ -14,9 +14,9 @@ const app = express()
 
 app.use(
   cors({
-    origin: "https://ai-chat-app-rose-eight.vercel.app",
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    credentials: true,
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "PATCH"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
