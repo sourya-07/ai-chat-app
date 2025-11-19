@@ -34,7 +34,8 @@ const UserAuth = ({ children }) => {
 
     return (
         <>
-            {children}</>
+            {children}
+        </>
     )
 }
 

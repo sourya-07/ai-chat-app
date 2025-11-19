@@ -28,7 +28,9 @@ app.use('/users', userRoutes)
 app.use('/projects', projectRoutes)
 app.use('/ai', aiRoutes)
 
-
+app.use('/',(req,res)=>{
+    console.log(`${req.method}-${req.url}`)
+})
 app.get('/', (req, res) => {
     res.send("Hello world!")
 })
